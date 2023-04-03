@@ -6,8 +6,8 @@ const mongoose=require('mongoose');
 // const Note = require('./models/Note');
 
 const bodyparser = require('body-parser');
-const { router } = require('./routes/Note');
-const noteRouter = require('./routes/Note');
+const { router } = require('./src/routes/Note');
+const noteRouter = require('./src/routes/Note');
 app.use(express.json())
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
