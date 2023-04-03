@@ -4,12 +4,18 @@ const router = express.Router();
 const Note = require('./../models/Note');
 
 router.post("/list", async function(req, res) {
-    var query = {};
-    if (req.body.userid) {
-        query.userid = req.body.userid;
+    try{
+
+        var query = {};
+        if (req.body.userid) {
+            query.userid = req.body.userid;
+        }
+        var notes = await Note.find(query);
+        res.status(201).send(notes);
     }
-    var notes = await Note.find(query);
-    res.json(notes);
+    catch(err){
+        res.status(400).send(err)
+    }
 });
 
 
