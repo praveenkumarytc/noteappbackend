@@ -11,7 +11,8 @@ router.post("/list", async function(req, res) {
             query.userid = req.body.userid;
         }
         var notes = await Note.find(query);
-        res.status(201).send(notes);
+        const response = { statuscode: res.statusCode, notes:notes,message: "API Works!" };
+        res.status(201).send(response);
     }
     catch(err){
         res.status(400).send(err)
